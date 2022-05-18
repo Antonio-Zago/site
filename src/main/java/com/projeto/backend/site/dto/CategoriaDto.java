@@ -1,6 +1,7 @@
 package com.projeto.backend.site.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,17 @@ public class CategoriaDto {
 		}
 		
 		public static List<CategoriaDto> converter(List<Categoria> categorias){
-			return categorias.stream().map(CategoriaDto::new).collect(Collectors.toList());
+			List<CategoriaDto> categoriasDto = new ArrayList<>();
+			
+			for(Categoria categoria : categorias) {
+				CategoriaDto categoriaDto = new CategoriaDto(categoria);
+				categoriasDto.add(categoriaDto);
+			}
+			
+			
+			//return categorias.stream().map(CategoriaDto::new).collect(Collectors.toList());
+			
+			return categoriasDto;
 		}
 
 		public Integer getIdCategoria() {
